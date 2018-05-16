@@ -2,33 +2,43 @@ package com.aravergar.lungar;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.FluxSink;
 import reactor.core.publisher.Mono;
+
+import java.awt.event.ActionListener;
 
 @Component
 public class Controller {
-    @Autowired
-    private ArticleRepository articleRepository;
 
     private String wRoot = new String("\u00e6");
-    private Mono<String> wSuffix = Mono.empty();
+//    private String wSuffix;
 
     @FXML
     private Text text;
     @FXML
     private TextField textField;
+//    @FXML
+//    private Button button;
 //    private String ra = new String("\u027b"+"a");
-
+    public Controller(){
+        text = new Text(wRoot);
+        setText("ass");
+    }
     public void setText(String value){
         text.textProperty().set(value);
     }
-
-    public void doSomething(ActionEvent actionEvent) {
-        System.out.println("clicked");
-        wSuffix.subscribe();
+    public void suffix(String value){
+        setText(wRoot+value);
+    }
+    public void updateSuffix(ActionEvent actionEvent) {
+        System.out.println("suffix updated: "+textField.getText());
 //        wSuffix. textField.getText();
+        suffix(textField.getText());
     }
 }
