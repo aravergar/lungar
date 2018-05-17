@@ -19,14 +19,13 @@ public class LungarApplication extends Application{
     @Override
     public void init() throws Exception {
         springContext = SpringApplication.run(LungarApplication.class);
-        FXMLLoader fxmlLoader = new FXMLLoader(Objects.requireNonNull(getClass().getClassLoader().getResource("sample.fxml")));
+        FXMLLoader fxmlLoader = new FXMLLoader(Objects.requireNonNull(getClass().getClassLoader().getResource("root.fxml")));
         fxmlLoader.setControllerFactory(springContext::getBean);
         root = fxmlLoader.load();
     }
 
 	@Override
 	public void start(Stage primaryStage) throws Exception{
-		root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("sample.fxml")));
 		primaryStage.setTitle("Hello World");
 		primaryStage.setScene(new Scene(root, 600, 400));
 		primaryStage.show();

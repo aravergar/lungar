@@ -20,15 +20,16 @@ public class Controller {
 //    private String wSuffix;
 
     @FXML
-    private Text text;
+    private Text text ;
     @FXML
     private TextField textField;
 //    @FXML
 //    private Button button;
 //    private String ra = new String("\u027b"+"a");
-    public Controller(){
-        text = new Text(wRoot);
-        setText("ass");
+    @FXML
+    public void initialize(){
+        setText(wRoot);
+        System.out.println("after text: " + text.getText() + ", wRoot: " + wRoot);
     }
     public void setText(String value){
         text.textProperty().set(value);
@@ -40,5 +41,6 @@ public class Controller {
         System.out.println("suffix updated: "+textField.getText());
 //        wSuffix. textField.getText();
         suffix(textField.getText());
+        System.out.println("text: " + text.getText());
     }
 }
